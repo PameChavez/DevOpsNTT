@@ -60,5 +60,10 @@
       "collectCoverageFrom": [
         "src/**/*.js"
       ]
-    }
+    },
+        "scripts": {
+        "build": "echo 'Compilando el proyecto...'",  
+        "test": "echo 'Ejecutando pruebas...'",        
+        "deploy": "echo 'Desplegando el código...'"    
+      }
 }
