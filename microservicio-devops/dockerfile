@@ -1,3 +1,4 @@
+# Documentos creado para cumplir la parte de contenedores llamado
 # Dockerfile
 FROM node:16-alpine
 
