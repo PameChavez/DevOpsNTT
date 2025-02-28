@@ -1,0 +1,53 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # O "master" si usas esa rama
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:  # Permitir ejecución manual
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias
+        run: |
+          npm install  # Para Node.js
+          # pip install -r requirements.txt  # Para Python
+          # mvn clean install  # Para Java
+
+      - name: Compilar proyecto
+        run: |
+          npm run build  # Para Node.js
+          # python setup.py build  # Para Python
+          # mvn package  # Para Java
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Instalar dependencias
+        run: npm install  # Cambia según tu lenguaje
+
+      - name: Ejecutar pruebas
+        run: npm test  # Cambia según tu framework
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'  # Solo se ejecuta en la rama main/master
+    runs-on: ubuntu-latest
+    steps:
+      - name: Desplegar en producción
+        run: |
+          echo "Desplegando versión en producción..."
+          # Agrega aquí comandos de despliegue (ejemplo: Docker, AWS, etc.)
+
