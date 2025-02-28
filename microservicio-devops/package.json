@@ -26,5 +26,39 @@
     "test:coverage": "jest --coverage",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
-  }
+  },
+    "name": "microservicio-devops",
+    "version": "1.0.0",
+    "description": "Microservicio REST para ejercicio DevOps",
+    "main": "src/server.js",
+    "scripts": {
+      "start": "node src/server.js",
+      "dev": "nodemon src/server.js",
+      "test": "jest",
+      "test:coverage": "jest --coverage",
+      "lint": "eslint .",
+      "lint:fix": "eslint . --fix"
+    },
+    "keywords": ["microservice", "devops", "rest", "api"],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "express": "^4.17.3",
+      "jsonwebtoken": "^8.5.1",
+      "dotenv": "^16.0.0",
+      "helmet": "^5.0.2",
+      "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+      "jest": "^27.5.1",
+      "supertest": "^6.2.2",
+      "eslint": "^8.11.0",
+      "nodemon": "^2.0.15"
+    },
+    "jest": {
+      "testEnvironment": "node",
+      "collectCoverageFrom": [
+        "src/**/*.js"
+      ]
+    }
 }
